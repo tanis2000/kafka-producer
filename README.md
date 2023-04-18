@@ -44,6 +44,7 @@ go run context/main.go
 This is the actual solution to our problem apparently.
 We spawn an http server and listen on GET http://0.0.0.0:3001/message 
 Whenever the end-point is invoked, a new message is produced and a context is passed in the message. The https call remains blocked until the feedback comes from the go routine. It is correlated through a Context that contains the channel to use to provide the feedback to the right handler.
+This is using a linger value of 0 to force the message to be sent to Kafka as soon as it is produced.
 
 Run the test
 
